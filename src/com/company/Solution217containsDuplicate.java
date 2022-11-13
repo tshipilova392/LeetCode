@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Arrays;
 
-public class Solution217 {
+public class Solution217containsDuplicate {
     public boolean containsDuplicate(int[] nums) {
         Arrays.sort(nums);
         int equalAmount=0;
