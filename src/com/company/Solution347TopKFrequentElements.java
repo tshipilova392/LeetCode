@@ -3,6 +3,10 @@ package com.company;
 import java.util.*;
 
 public class Solution347TopKFrequentElements {
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(n)
+     */
     public static int[] topKFrequent(int[] nums, int k) {
         Map<Integer,Integer> countMap = new HashMap<>();
         for (int number : nums){
