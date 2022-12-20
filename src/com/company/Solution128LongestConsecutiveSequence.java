@@ -11,28 +11,23 @@ public class Solution128LongestConsecutiveSequence {
     }
 
     public static int longestConsecutive(int[] nums) {
-        if (nums.length==0) return 0;
-        TreeSet<Integer> treeSet = new TreeSet<>();
-        int min = Integer.MAX_VALUE;
-        for (int x: nums){
-            treeSet.add(x);
-            min = Math.min(min,x);
+        if (nums.length == 0) return 0;
+        HashSet<Integer> hashSet = new HashSet<>();
+        for (int num : nums) {
+            hashSet.add(num);
         }
-        int sequenceLength=1;
-        int maxSequenceLength=1;
-        int previousElement = min;
-        for (int x: treeSet){
-            if (x-previousElement==1){
-                sequenceLength++;
+        int result = 1;
+        for (int i = 0; i < nums.length; i++) {
+            if (!hashSet.contains(nums[i]-1)){
+                int count=1;
+                while (hashSet.contains(nums[i]+1)){
+                    count++;
+                    nums[i]++;
+                }
+                result = Math.max(count, result);
             }
-            else{
-                maxSequenceLength = Math.max(maxSequenceLength,sequenceLength);
-                sequenceLength=1;
-            }
-            previousElement=x;
         }
-        maxSequenceLength = Math.max(maxSequenceLength,sequenceLength);
-        return maxSequenceLength;
+        return result;
     }
 
 
